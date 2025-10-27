@@ -24,6 +24,7 @@ namespace DataAccess.Data
             modelBuilder.SeedReviews();
             modelBuilder.SeedBorrows();
             modelBuilder.SeedWishlists();
+            modelBuilder.SeedUsers();
         }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-string SomeeStr = builder.Configuration.GetConnectionString("SomeStr") ?? throw new InvalidOperationException("Connection string 'SomeStr' not found.");
+string SomeeStr = builder.Configuration.GetConnectionString("SomeeStr") ?? throw new InvalidOperationException("Connection string 'SomeeStr' not found.");
 
 // Add services to the container.
 

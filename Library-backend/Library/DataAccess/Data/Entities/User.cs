@@ -8,5 +8,7 @@ namespace DataAccess.Data.Entities
 
         // navigation properties
         public ICollection<Review>? Reviews { get; set; }
+        public ICollection<Borrow>? Borrows { get; set; }
+        public ICollection<Wishlist>? Wishlists { get; set; }
     }
 }
