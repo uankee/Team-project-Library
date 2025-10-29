@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Data.Entities
 {
-    public class Review : BaseEntities
+    public class Review : BaseEntity
     {
         public int Id { get; set; }
         public int BookId { get; set; }

@@ -2,7 +2,7 @@
 
 namespace DataAccess.Data.Entities
 {
-    public class User : IdentityUser, BaseEntities
+    public class User : IdentityUser, BaseEntity
     {
         public string? Country { get; set; }
 

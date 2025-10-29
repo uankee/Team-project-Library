@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Data.Entities
 {
-    public interface BaseEntities {}
+    public interface BaseEntity {}
 }
