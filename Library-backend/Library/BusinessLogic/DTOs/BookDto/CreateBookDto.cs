@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace BusinessLogic.Configurations.DTOs.BookDto
 {
-    public class UpdateDto
+    public class CreateBookDto
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public string CoverImage { get; set; }
         public DateTime PublishedDate { get; set; }

@@ -31,7 +31,11 @@
         "frameworks": {
           "net9.0": {
             "targetAlias": "net9.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\aarte\\OneDrive\\Desktop\\-\\Repositories\\My repositories\\Нова папка (5)\\Library-backend\\Library\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "C:\\Users\\aarte\\OneDrive\\Desktop\\-\\Repositories\\My repositories\\Нова папка (5)\\Library-backend\\Library\\DataAccess\\DataAccess.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

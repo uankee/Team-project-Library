@@ -2108,7 +2108,8 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
         "dependencies": {
-          "AutoMapper": "15.1.0"
+          "AutoMapper": "15.1.0",
+          "DataAccess": "1.0.0"
         },
         "compile": {
           "bin/placeholder/BusinessLogic.dll": {}
