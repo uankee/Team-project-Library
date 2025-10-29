@@ -1,4 +1,5 @@
 using DataAccess.Data;
+using DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,8 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddDbContext<LibraryDbContext>(options =>
     options.UseSqlServer(SomeeStr));
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 var app = builder.Build();
 
