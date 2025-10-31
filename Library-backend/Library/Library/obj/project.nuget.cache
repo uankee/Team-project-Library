@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QageXdnoDzM=",
+  "dgSpecHash": "VXlvnGzm09A=",
   "success": true,
-  "projectFilePath": "C:\\Users\\aarte\\OneDrive\\Desktop\\-\\Repositories\\My repositories\\Нова папка (3)\\Library-backend\\Library\\Library\\Library.csproj",
+  "projectFilePath": "C:\\Users\\aarte\\OneDrive\\Desktop\\-\\Repositories\\My repositories\\Нова папка (5)\\Library-backend\\Library\\Library\\Library.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aarte\\.nuget\\packages\\automapper\\15.1.0\\automapper.15.1.0.nupkg.sha512",
     "C:\\Users\\aarte\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
