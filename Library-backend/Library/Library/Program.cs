@@ -1,32 +1,43 @@
 using DataAccess.Data;
 using DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
+using BusinessLogic.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
-string SomeeStr = builder.Configuration.GetConnectionString("SomeeStr") ?? throw new InvalidOperationException("Connection string 'SomeeStr' not found.");
+string SomeeStr = builder.Configuration.GetConnectionString("SomeeStr")
+    ?? throw new InvalidOperationException("Connection string 'SomeeStr' not found.");
 
-// Add services to the container.
-
+// Add services to the container
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
 
+// Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+//  AutoMapper (сумісно з усіма версіями)
+builder.Services.AddAutoMapper(cfg =>
+{
+    cfg.AddProfile<MapperProfile>();
+});
+
+//  DbContext
 builder.Services.AddDbContext<LibraryDbContext>(options =>
     options.UseSqlServer(SomeeStr));
 
+// Repository
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// HTTP pipeline
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
 app.MapControllers();
