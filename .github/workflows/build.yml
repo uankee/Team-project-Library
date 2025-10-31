@@ -42,7 +42,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          cd Library
-          ${{ runner.temp }}\scanner\dotnet-sonarscanner begin /k:"zdkazuha_Team-project-Library" /o:"zdkazuha" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
-          dotnet build Library.sln
-          ${{ runner.temp }}\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+         cd Library-backend/Library
+         ${{ runner.temp }}\scanner\dotnet-sonarscanner begin /k:"zdkazuha_Team-project-Library" /o:"zdkazuha" /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+         dotnet build Library.sln
+         ${{ runner.temp }}\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
