@@ -8,8 +8,6 @@
       "applicationUrl": "http://localhost:5162",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ADMIN_EMAIL": "admin@library.com",
-        "ADMIN_PASSWORD": "Admin@123"
       }
     },
     "https": {
@@ -19,8 +17,6 @@
       "applicationUrl": "https://localhost:7167;http://localhost:5162",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ADMIN_EMAIL": "admin@library.com",
-        "ADMIN_PASSWORD": "Admin@123"
       }
     }
   }
