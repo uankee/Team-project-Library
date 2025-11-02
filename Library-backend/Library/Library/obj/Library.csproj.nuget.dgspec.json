@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\Library\\Library.csproj": {}
+    "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\Library\\Library.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\BusinessLogic.csproj": {
+    "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\BusinessLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\BusinessLogic.csproj",
+        "projectUniqueName": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\BusinessLogic.csproj",
         "projectName": "BusinessLogic",
-        "projectPath": "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\BusinessLogic.csproj",
+        "projectPath": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\BusinessLogic.csproj",
         "packagesPath": "C:\\Users\\rudzi\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\obj\\",
         "projectStyle": "PackageReference",
@@ -32,8 +32,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj"
+              "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj"
               }
             }
           }
@@ -83,12 +83,12 @@
         }
       }
     },
-    "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj": {
+    "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj",
+        "projectPath": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj",
         "packagesPath": "C:\\Users\\rudzi\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
@@ -182,14 +182,14 @@
         }
       }
     },
-    "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\Library\\Library.csproj": {
+    "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\Library\\Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\Library\\Library.csproj",
+        "projectUniqueName": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\Library\\Library.csproj",
         "projectName": "Library",
-        "projectPath": "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\Library\\Library.csproj",
+        "projectPath": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\Library\\Library.csproj",
         "packagesPath": "C:\\Users\\rudzi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\Library\\obj\\",
+        "outputPath": "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\Library\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -210,11 +210,11 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\BusinessLogic.csproj": {
-                "projectPath": "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\BusinessLogic.csproj"
+              "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\BusinessLogic.csproj": {
+                "projectPath": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\BusinessLogic.csproj"
               },
-              "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj"
+              "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj"
               }
             }
           }

@@ -13,14 +13,14 @@ namespace DataAccess.Data.Seeding
 
             string[] roles = { "Admin", "User" };
 
-            // 🔹 Створення ролей
+            //Створення ролей
             foreach (var role in roles)
             {
                 if (!await roleManager.RoleExistsAsync(role))
                     await roleManager.CreateAsync(new IdentityRole(role));
             }
 
-            // 🔹 Отримання даних адміністратора з середовища
+            // Отримання даних адміністратора з середовища
             var adminEmail = Environment.GetEnvironmentVariable("ADMIN_EMAIL");
             var adminPassword = Environment.GetEnvironmentVariable("ADMIN_PASSWORD");
 
