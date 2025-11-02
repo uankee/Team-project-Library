@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\BusinessLogic.csproj": {}
+    "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\BusinessLogic.csproj": {}
   },
   "projects": {
-    "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\BusinessLogic.csproj": {
+    "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\BusinessLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\BusinessLogic.csproj",
+        "projectUniqueName": "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\BusinessLogic.csproj",
         "projectName": "BusinessLogic",
-        "projectPath": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\BusinessLogic.csproj",
+        "projectPath": "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\BusinessLogic.csproj",
         "packagesPath": "C:\\Users\\rudzi\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\BusinessLogic\\obj\\",
         "projectStyle": "PackageReference",
@@ -32,8 +32,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj"
+              "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj"
               }
             }
           }
@@ -57,6 +57,10 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[15.1.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[9.0.10, )"
             }
           },
           "imports": [
@@ -79,12 +83,12 @@
         }
       }
     },
-    "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj": {
+    "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj",
+        "projectPath": "C:\\Users\\rudzi\\source\\repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\DataAccess.csproj",
         "packagesPath": "C:\\Users\\rudzi\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\rudzi\\Source\\Repos\\Team-project-Library\\Library-backend\\Library\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
@@ -125,6 +129,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[9.0.10, )"
+            },
             "Microsoft.AspNetCore.Identity": {
               "target": "Package",
               "version": "[2.3.1, )"
