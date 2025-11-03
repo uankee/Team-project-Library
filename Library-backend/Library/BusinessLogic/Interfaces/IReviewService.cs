@@ -4,14 +4,14 @@ namespace BusinessLogic.Interfaces
 {
     public interface IReviewService
     {
-        Task<IList<ReviewDto>> GetAll(string? bookTitle, string? userName, int numberPage);
+        Task<IList<ReviewDto>> GetAllAsync(string? bookTitle, string? userName, int pageNumber);
 
-        Task<ReviewDto?> GetById(int id);
+        Task<ReviewDto?> GetByIdAsync(int id);
 
-        Task<ReviewDto> Create(CreateReviewDto dto);
+        Task<ReviewDto> CreateAsync(CreateReviewDto dto);
 
-        Task Update(int id, UpdateReviewDto dto);
+        Task UpdateAsync(int id, UpdateReviewDto dto);
 
-        Task Delete(int id);
+        Task DeleteAsync(int id);
     }
 }

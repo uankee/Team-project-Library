@@ -20,7 +20,7 @@ namespace Library.Controllers
         [Authorize]
         public async Task<IActionResult> GetAll(string? bookTitle, string? userName, int pageNumber = 1)
         {
-            var reviews = await reviewService.GetAll(bookTitle, userName, pageNumber);
+            var reviews = await reviewService.GetAllAsync(bookTitle, userName, pageNumber);
 
             return Ok(reviews);
         }
@@ -29,7 +29,7 @@ namespace Library.Controllers
         [Authorize]
         public async Task<IActionResult> GetById(int id)
         {
-            var review = await reviewService.GetById(id);
+            var review = await reviewService.GetByIdAsync(id);
 
             if (review == null)
                 return NotFound();
@@ -41,7 +41,7 @@ namespace Library.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(CreateReviewDto dto)
         {
-            var createdReview = await reviewService.Create(dto);
+            var createdReview = await reviewService.CreateAsync(dto);
 
             return CreatedAtAction(nameof(GetById), new { id = createdReview.Id }, createdReview);
         }
@@ -50,7 +50,7 @@ namespace Library.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, UpdateReviewDto dto)
         {
-            await reviewService.Update(id, dto);
+            await reviewService.UpdateAsync(id, dto);
             return NoContent();
         }
 
@@ -58,7 +58,7 @@ namespace Library.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
-            await reviewService.Delete(id);
+            await reviewService.DeleteAsync(id);
             return NoContent();
         }
     }

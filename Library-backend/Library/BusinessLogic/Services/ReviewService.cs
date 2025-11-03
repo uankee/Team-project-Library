@@ -18,7 +18,7 @@ namespace BusinessLogic.Services
             this.mapper = mapper;
         }
 
-        public async Task<ReviewDto> Create(CreateReviewDto dto)
+        public async Task<ReviewDto> CreateAsync(CreateReviewDto dto)
         {
             var review = mapper.Map<Review>(dto);
 
@@ -27,7 +27,7 @@ namespace BusinessLogic.Services
             return mapper.Map<ReviewDto>(review);
         }
 
-        public async Task Delete(int id)
+        public async Task DeleteAsync(int id)
         {
             if(id < 0)
                 throw new Exception("Id can`t be negative");
@@ -40,7 +40,7 @@ namespace BusinessLogic.Services
             await repo.DeleteAsync(id);
         }
 
-        public async Task<IList<ReviewDto>> GetAll(string? bookTitle, string? userName, int numberPage = 1)
+        public async Task<IList<ReviewDto>> GetAllAsync(string? bookTitle, string? userName, int pageNumber = 1)
         {
             var filters = PredicateBuilder.New<Review>(true);
 
@@ -50,12 +50,12 @@ namespace BusinessLogic.Services
             if(userName != null)
                 filters = filters.And(x => x.User.UserName.Contains(userName));
 
-            var reviews = await repo.GetAllAsync(numberPage, 10, filters, "Book", "User");
+            var reviews = await repo.GetAllAsync(pageNumber, 10, filters, "Book", "User");
 
             return mapper.Map<IList<ReviewDto>>(reviews);
         }
 
-        public async Task<ReviewDto?> GetById(int id)
+        public async Task<ReviewDto?> GetByIdAsync(int id)
         {
             if(id < 0)
                 throw new Exception("Id can`t be negative");
@@ -68,8 +68,11 @@ namespace BusinessLogic.Services
             return mapper.Map<ReviewDto>(review);
         }
 
-        public async Task Update(int id, UpdateReviewDto dto)
+        public async Task UpdateAsync(int id, UpdateReviewDto dto)
         {
+            if(id <= 0)
+                throw new Exception("Id can`t be negative or zero.");
+
             var review = await repo.GetByIdAsync(id);
 
             if (review == null)
