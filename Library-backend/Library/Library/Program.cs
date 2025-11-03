@@ -1,7 +1,9 @@
+using BusinessLogic.Configurations;
+using BusinessLogic.Interfaces;
+using BusinessLogic.Services;
 using DataAccess.Data;
 using DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
-using BusinessLogic.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +29,9 @@ builder.Services.AddDbContext<LibraryDbContext>(options =>
 
 // Repository
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+builder.Services.AddScoped<IWishlistService, WishlistService>();
+
 
 var app = builder.Build();
 
