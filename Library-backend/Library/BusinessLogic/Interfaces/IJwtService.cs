@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DataAccess.Data.Entities;
+using System.Security.Claims;
 
 namespace BusinessLogic.Interfaces
 {
-    internal class IJwtService
+    public interface IJwtService
     {
+        string GenerateAccessToken(IEnumerable<Claim> claims);
+        IEnumerable<Claim> GetClaims(User user);
     }
 }

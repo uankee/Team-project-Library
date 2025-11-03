@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BusinessLogic.Configurations.DTOs.UserDto;
+using BusinessLogic.DTOs.Auth;
 
 namespace BusinessLogic.Interfaces
 {
-    internal class IUserService
+    public interface IUserService
     {
+        Task<IEnumerable<UserDto>> GetAllAsync();
+        Task<UserDto?> GetByIdAsync(string id);
+        Task<UserDto> CreateAsync(CreateUserDto dto);
+        Task<bool> UpdateAsync(string id, UpdateUserDto dto);
+        Task<bool> DeleteAsync(string id);
+        Task<string?> RegisterAsync(RegisterDto dto);
+        Task<string?> LoginAsync(LoginDto dto);
     }
 }

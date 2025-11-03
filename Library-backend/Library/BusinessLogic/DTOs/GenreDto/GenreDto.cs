@@ -9,10 +9,7 @@ namespace BusinessLogic.Configurations.DTOs.GenreDto
     public class GenreDto
     {
         public int Id { get; set; }
-        public int BookId { get; set; }
-        public string UserId { get; set; }
-        public DateTime BorrowedAt { get; set; }
-        public DateTime DueDate { get; set; }
-        public DateTime ReturnedAt { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
 }
