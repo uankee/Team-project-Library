@@ -24,6 +24,7 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IReviewService, ReviewService>();
 builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
+builder.Services.AddScoped<IBorrowService, BorrowService>();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
