@@ -41,7 +41,7 @@ namespace BusinessLogic.Services
             await repo.DeleteAsync(id);
         }
 
-        public async Task<IEnumerable<GenreDto>> GetAllAsync(string? genreName, int pageNumber)
+        public async Task<IEnumerable<GenreDto>> GetAllAsync(string? genreName, int pageNumber = 1)
         {
             var filters = PredicateBuilder.New<Genre>(true);
 

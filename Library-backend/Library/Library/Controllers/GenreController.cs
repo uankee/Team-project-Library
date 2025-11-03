@@ -19,7 +19,7 @@ namespace Library.Controllers
 
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> GetAll(string? genreName, int pageNumber)
+        public async Task<IActionResult> GetAll(string? genreName, int pageNumber = 1)
         {
             var genres = await genreService.GetAllAsync(genreName, pageNumber);
 
