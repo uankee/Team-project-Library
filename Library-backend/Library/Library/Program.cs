@@ -23,6 +23,7 @@ string SomeeStr = builder.Configuration.GetConnectionString("SomeeStr")
 builder.Services.AddControllers();
 builder.Services.AddScoped<IReviewService, ReviewService>();
 builder.Services.AddScoped<IGenreService, GenreService>();
+builder.Services.AddScoped<IAuthorService, AuthorService>();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
