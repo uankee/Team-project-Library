@@ -21,6 +21,7 @@ string SomeeStr = builder.Configuration.GetConnectionString("SomeeStr")
 
 // Controllers
 builder.Services.AddControllers();
+builder.Services.AddScoped<IReviewService, ReviewService>();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
