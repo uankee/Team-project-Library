@@ -25,6 +25,7 @@ builder.Services.AddScoped<IReviewService, ReviewService>();
 builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<IBorrowService, BorrowService>();
+builder.Services.AddScoped<IWishlistService, WishlistService>();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
