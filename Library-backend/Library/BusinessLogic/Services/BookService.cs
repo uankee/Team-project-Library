@@ -27,8 +27,8 @@ namespace BusinessLogic.Services
                 filter = b => b.Title.Contains(title);
 
             var books = await _bookRepository.GetAllAsync(
-                filtering: filter,
-                includes: new[] { "Author", "Genre" }
+                filtering: filter
+            //includes: new[] { "Author", "Genre" }
             );
 
             return _mapper.Map<IEnumerable<BookDto>>(books);
