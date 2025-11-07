@@ -10,16 +10,16 @@ namespace DataAccess.Data
         {
             modelBuilder.Entity<Book>().HasData(new[]
             {
-                new Book { Id = 1, Title = "The Silent Library", CoverImage = "covers/silent_library.jpg", PublishedDate = new DateTime(2015, 6, 12), AvailableCopies = 5, AuthorId = 1, GenreId = 1 },
-                new Book { Id = 2, Title = "Echoes of Time", CoverImage = "covers/echoes_of_time.jpg", PublishedDate = new DateTime(2018, 2, 25), AvailableCopies = 8, AuthorId = 2, GenreId = 2 },
-                new Book { Id = 3, Title = "Whispers in the Dark", CoverImage = "covers/whispers_dark.jpg", PublishedDate = new DateTime(2020, 11, 3), AvailableCopies = 3, AuthorId = 3, GenreId = 3 },
-                new Book { Id = 4, Title = "Beyond the Horizon", CoverImage = "covers/beyond_horizon.jpg", PublishedDate = new DateTime(2017, 9, 15), AvailableCopies = 6, AuthorId = 4, GenreId = 4 },
-                new Book { Id = 5, Title = "The Lost Kingdom", CoverImage = "covers/lost_kingdom.jpg", PublishedDate = new DateTime(2016, 5, 1), AvailableCopies = 7, AuthorId = 5, GenreId = 1 },
-                new Book { Id = 6, Title = "Shadows of the Mind", CoverImage = "covers/shadows_mind.jpg", PublishedDate = new DateTime(2019, 12, 8), AvailableCopies = 4, AuthorId = 2, GenreId = 2 },
-                new Book { Id = 7, Title = "Winds of Destiny", CoverImage = "covers/winds_destiny.jpg", PublishedDate = new DateTime(2014, 3, 20), AvailableCopies = 9, AuthorId = 1, GenreId = 5 },
-                new Book { Id = 8, Title = "Fragments of Tomorrow", CoverImage = "covers/fragments_tomorrow.jpg", PublishedDate = new DateTime(2021, 7, 10), AvailableCopies = 2, AuthorId = 3, GenreId = 3 },
-                new Book { Id = 9, Title = "City of Echoes", CoverImage = "covers/city_echoes.jpg", PublishedDate = new DateTime(2022, 4, 17), AvailableCopies = 10, AuthorId = 4, GenreId = 4 },
-                new Book { Id = 10, Title = "The Forgotten Path", CoverImage = "covers/forgotten_path.jpg", PublishedDate = new DateTime(2023, 8, 29), AvailableCopies = 5, AuthorId = 5, GenreId = 5 }
+                new Book { Id = 1, Title = "The Silent Library", CoverImage = "https://m.media-amazon.com/images/I/410qtwm57cL._AC_UF1000%2C1000_QL80_.jpg", PublishedDate = new DateTime(2015, 6, 12), AvailableCopies = 5, AuthorId = 1, GenreId = 1 },
+                new Book { Id = 2, Title = "Echoes of Time", CoverImage = "https://m.media-amazon.com/images/I/81%2BSDwFNDyL._AC_UF1000%2C1000_QL80_.jpg", PublishedDate = new DateTime(2018, 2, 25), AvailableCopies = 8, AuthorId = 2, GenreId = 2 },
+                new Book { Id = 3, Title = "Whispers in the Dark", CoverImage = "https://www.hachette.com.au/content/books/9781472112699.jpg", PublishedDate = new DateTime(2020, 11, 3), AvailableCopies = 3, AuthorId = 3, GenreId = 3 },
+                new Book { Id = 4, Title = "Beyond the Horizon", CoverImage = "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1673020125i/72404657.jpg", PublishedDate = new DateTime(2017, 9, 15), AvailableCopies = 6, AuthorId = 4, GenreId = 4 },
+                new Book { Id = 5, Title = "The Lost Kingdom", CoverImage = "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1699208745i/201610825.jpg", PublishedDate = new DateTime(2016, 5, 1), AvailableCopies = 7, AuthorId = 5, GenreId = 1 },
+                new Book { Id = 6, Title = "Shadows of the Mind", CoverImage = "https://m.media-amazon.com/images/I/71hi9RNaieL.jpg", PublishedDate = new DateTime(2019, 12, 8), AvailableCopies = 4, AuthorId = 2, GenreId = 2 },
+                new Book { Id = 7, Title = "Winds of Destiny", CoverImage = "https://naasr.org/cdn/shop/products/WindsofDestinylg_1200x1200.jpg?v=1661464372", PublishedDate = new DateTime(2014, 3, 20), AvailableCopies = 9, AuthorId = 1, GenreId = 5 },
+                new Book { Id = 8, Title = "Fragments of Tomorrow", CoverImage = "https://m.media-amazon.com/images/I/91CBdKf3gpL._UF1000%2C1000_QL80_.jpg", PublishedDate = new DateTime(2021, 7, 10), AvailableCopies = 2, AuthorId = 3, GenreId = 3 },
+                new Book { Id = 9, Title = "City of Echoes", CoverImage = "https://images.thalia.media/07/-/050ad87e2bc9463e8ac4656f54f9683d/avatar-legends-city-of-echoes-avatar-legends-book-1-gebundene-ausgabe-judy-i-lin-englisch.jpeg", PublishedDate = new DateTime(2022, 4, 17), AvailableCopies = 10, AuthorId = 4, GenreId = 4 },
+                new Book { Id = 10, Title = "The Forgotten Path", CoverImage = "https://m.media-amazon.com/images/I/71NscVJhd6L._AC_UF1000%2C1000_QL80_.jpg", PublishedDate = new DateTime(2023, 8, 29), AvailableCopies = 5, AuthorId = 5, GenreId = 5 }
             });
         }
 

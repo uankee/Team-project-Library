@@ -4,6 +4,7 @@ using BusinessLogic.Interfaces;
 using DataAccess.Data.Entities;
 using DataAccess.Repositories;
 using System.Linq.Expressions;
+using LinqKit;
 
 namespace BusinessLogic.Services
 {
@@ -19,16 +20,18 @@ namespace BusinessLogic.Services
         }
 
         // Getall (filtre)
-        public async Task<IEnumerable<BookDto>> GetAllAsync(string? title = null)
+        public async Task<IEnumerable<BookDto>> GetAllAsync(string? title = null, int pageNumber = 1)
         {
-            Expression<Func<Book, bool>>? filter = null;
+            var filters = PredicateBuilder.New<Book>(true);
 
             if (!string.IsNullOrEmpty(title))
-                filter = b => b.Title.Contains(title);
+                filters = filters.And(b => b.Title.Contains(title));
 
             var books = await _bookRepository.GetAllAsync(
-                filtering: filter
-            //includes: new[] { "Author", "Genre" }
+                pageNumber,
+                10,
+                filters,
+                ["Author", "Genre"]
             );
 
             return _mapper.Map<IEnumerable<BookDto>>(books);

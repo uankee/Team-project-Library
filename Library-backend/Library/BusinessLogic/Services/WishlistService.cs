@@ -17,9 +17,9 @@ namespace BusinessLogic.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<WishlistDto>> GetAllAsync()
+        public async Task<IEnumerable<WishlistDto>> GetAllAsync(int pageNumber = 1)
         {
-            var wishlists = await _wishlistRepository.GetAllAsync();
+            var wishlists = await _wishlistRepository.GetAllAsync(pageNumber, 10, includes: ["Book", "User"]);
             return _mapper.Map<IEnumerable<WishlistDto>>(wishlists);
         }
 

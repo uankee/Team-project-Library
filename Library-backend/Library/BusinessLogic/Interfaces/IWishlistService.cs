@@ -9,7 +9,7 @@ namespace BusinessLogic.Interfaces
 {
     public interface IWishlistService
     {
-        Task<IEnumerable<WishlistDto>> GetAllAsync();
+        Task<IEnumerable<WishlistDto>> GetAllAsync(int pageNumber);
         Task<WishlistDto?> GetByIdAsync(int id);
         Task<WishlistDto> CreateAsync(CreateWishlistDto dto);
         Task<WishlistDto?> UpdateAsync(int id, UpdateWishlistDto dto);

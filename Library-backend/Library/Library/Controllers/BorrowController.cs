@@ -19,12 +19,12 @@ namespace WebAPI.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(int pageNumber = 1)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var isAdmin = User.IsInRole("Admin");
 
-            var borrows = await _borrowService.GetAllAsync();
+            var borrows = await _borrowService.GetAllAsync(pageNumber);
 
 
             if (!isAdmin)

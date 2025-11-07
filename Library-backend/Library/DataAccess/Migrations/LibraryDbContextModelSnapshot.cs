@@ -117,7 +117,7 @@ namespace DataAccess.Migrations
                             Id = 1,
                             AuthorId = 1,
                             AvailableCopies = 5,
-                            CoverImage = "covers/silent_library.jpg",
+                            CoverImage = "https://m.media-amazon.com/images/I/410qtwm57cL._AC_UF1000%2C1000_QL80_.jpg",
                             GenreId = 1,
                             PublishedDate = new DateTime(2015, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Silent Library"
@@ -127,7 +127,7 @@ namespace DataAccess.Migrations
                             Id = 2,
                             AuthorId = 2,
                             AvailableCopies = 8,
-                            CoverImage = "covers/echoes_of_time.jpg",
+                            CoverImage = "https://m.media-amazon.com/images/I/81%2BSDwFNDyL._AC_UF1000%2C1000_QL80_.jpg",
                             GenreId = 2,
                             PublishedDate = new DateTime(2018, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Echoes of Time"
@@ -137,7 +137,7 @@ namespace DataAccess.Migrations
                             Id = 3,
                             AuthorId = 3,
                             AvailableCopies = 3,
-                            CoverImage = "covers/whispers_dark.jpg",
+                            CoverImage = "https://www.hachette.com.au/content/books/9781472112699.jpg",
                             GenreId = 3,
                             PublishedDate = new DateTime(2020, 11, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Whispers in the Dark"
@@ -147,7 +147,7 @@ namespace DataAccess.Migrations
                             Id = 4,
                             AuthorId = 4,
                             AvailableCopies = 6,
-                            CoverImage = "covers/beyond_horizon.jpg",
+                            CoverImage = "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1673020125i/72404657.jpg",
                             GenreId = 4,
                             PublishedDate = new DateTime(2017, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Beyond the Horizon"
@@ -157,7 +157,7 @@ namespace DataAccess.Migrations
                             Id = 5,
                             AuthorId = 5,
                             AvailableCopies = 7,
-                            CoverImage = "covers/lost_kingdom.jpg",
+                            CoverImage = "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1699208745i/201610825.jpg",
                             GenreId = 1,
                             PublishedDate = new DateTime(2016, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Lost Kingdom"
@@ -167,7 +167,7 @@ namespace DataAccess.Migrations
                             Id = 6,
                             AuthorId = 2,
                             AvailableCopies = 4,
-                            CoverImage = "covers/shadows_mind.jpg",
+                            CoverImage = "https://m.media-amazon.com/images/I/71hi9RNaieL.jpg",
                             GenreId = 2,
                             PublishedDate = new DateTime(2019, 12, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Shadows of the Mind"
@@ -177,7 +177,7 @@ namespace DataAccess.Migrations
                             Id = 7,
                             AuthorId = 1,
                             AvailableCopies = 9,
-                            CoverImage = "covers/winds_destiny.jpg",
+                            CoverImage = "https://naasr.org/cdn/shop/products/WindsofDestinylg_1200x1200.jpg?v=1661464372",
                             GenreId = 5,
                             PublishedDate = new DateTime(2014, 3, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Winds of Destiny"
@@ -187,7 +187,7 @@ namespace DataAccess.Migrations
                             Id = 8,
                             AuthorId = 3,
                             AvailableCopies = 2,
-                            CoverImage = "covers/fragments_tomorrow.jpg",
+                            CoverImage = "https://m.media-amazon.com/images/I/91CBdKf3gpL._UF1000%2C1000_QL80_.jpg",
                             GenreId = 3,
                             PublishedDate = new DateTime(2021, 7, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Fragments of Tomorrow"
@@ -197,7 +197,7 @@ namespace DataAccess.Migrations
                             Id = 9,
                             AuthorId = 4,
                             AvailableCopies = 10,
-                            CoverImage = "covers/city_echoes.jpg",
+                            CoverImage = "https://images.thalia.media/07/-/050ad87e2bc9463e8ac4656f54f9683d/avatar-legends-city-of-echoes-avatar-legends-book-1-gebundene-ausgabe-judy-i-lin-englisch.jpeg",
                             GenreId = 4,
                             PublishedDate = new DateTime(2022, 4, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "City of Echoes"
@@ -207,7 +207,7 @@ namespace DataAccess.Migrations
                             Id = 10,
                             AuthorId = 5,
                             AvailableCopies = 5,
-                            CoverImage = "covers/forgotten_path.jpg",
+                            CoverImage = "https://m.media-amazon.com/images/I/71NscVJhd6L._AC_UF1000%2C1000_QL80_.jpg",
                             GenreId = 5,
                             PublishedDate = new DateTime(2023, 8, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "The Forgotten Path"
