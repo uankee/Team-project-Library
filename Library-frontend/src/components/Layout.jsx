@@ -4,7 +4,9 @@ import { Link, Outlet } from 'react-router-dom';
 import {
     HomeFilled,
     AlignLeftOutlined,
-    BookOutlined
+    BookOutlined,
+    UserAddOutlined,
+    UserOutlined
 } from '@ant-design/icons';
 const { Header, Content, Footer } = Layout;
 
@@ -17,15 +19,28 @@ const items = [
     },
     { 
         key: 'rental_history',
-        label: <Link to="rental_history">Rental History</Link>,
+        label: <Link to='rental_history'>Rental History</Link>,
         icon: <AlignLeftOutlined />
     },
     { 
         key: 'my_books',
-        label: <Link to="my_books">My Books</Link>,
+        label: <Link to='my_books'>My Books</Link>,
         icon: <BookOutlined />
     }
 ];
+
+const itemsLR= [
+  {
+    key: 'register',
+    label: <Link to='register'>Register</Link>,
+    icon: <UserAddOutlined />
+  },
+  {
+    key: 'login',
+    label: <Link to='login'>Login</Link>,
+    icon: <UserOutlined />
+  },
+]
 
 const AppLayout = () => {
   const {
@@ -33,10 +48,9 @@ const AppLayout = () => {
   } = theme.useToken();
 
   return (
-    <Layout style={{ minHeight: '100vh', width: '100vw' }}>
+    <Layout style={{ minHeight: '100vh' }}>
       <Header
         style={{
-          position: 'sticky',
           top: 0,
           zIndex: 1,
           width: '100%',
@@ -44,8 +58,8 @@ const AppLayout = () => {
           alignItems: 'center',
           background: 'transparent',
           position: 'absolute',
-          top: '0',
-          left: '0',
+          top: 0,
+          left: 0,
         }}
       >
         <h2 style={{ color: 'white', marginRight: 24 }}>Library Books</h2>
@@ -54,7 +68,15 @@ const AppLayout = () => {
           mode="horizontal"
           defaultSelectedKeys={['1']}
           items={items}
-          style={{ flex: 1, background: 'transparent', color: 'black' }}
+          style={{ flex: 1, minWidth: 0, background: 'transparent', color: 'black' }}
+        />
+
+        <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={['1']}
+          items={itemsLR}
+          style={{ flex: 1, minWidth: 0, background: 'transparent', color: 'black', justifyContent: 'flex-end' }}
         />
       </Header>
 

@@ -1,6 +1,8 @@
 import React, { cloneElement, useEffect, useState } from 'react';
 import BookCard from './BookCard';
 import { Button, Col, Row } from 'antd';
+import image from '../img/Home.jpg';
+
 
 function Home() {
 
@@ -34,10 +36,8 @@ function Home() {
     }
 
   return (
-    <div className="home-containe" >
-        <div className='home-baground'>
-
-        <h1 className='welcome'>W<span style={{color: "black"}}>elco</span>me to the Library</h1>
+    <div className="home-container baground" style={{backgroundImage: `url(${image})`}}>
+        <h1 className='welcome' style={{marginTop: -100}}>W<span style={{color: 'black'}} >elco</span>me to the Library</h1>
 
         <div className='home-buttons'>
             <button className='button' onClick={PreviousPage} style={{marginRight: 6}}>Previous Page</button>
@@ -58,9 +58,8 @@ function Home() {
                     ))}
                 </Row>
             </div> 
-        }
+        } 
         </div>
-    </div>
   );
 };
 
