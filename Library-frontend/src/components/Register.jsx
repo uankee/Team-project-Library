@@ -1,0 +1,93 @@
+import React, { useState } from 'react';
+import { Button, Form, Input } from 'antd';
+import image from '../img/Login.jpg';
+
+const onFinish = async (values) => {
+  console.log('Success:', values);
+
+  if(values.password_One !== values.password_Two)
+    return;
+
+  try {
+    const response = await fetch('http://localhost:5162/api/User/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify({
+            email: values.username,
+            password: values.password_One
+        })
+    })
+
+    if(!response.ok) {
+        throw new Error('Login failed');
+    }
+
+    const data = await response.json();
+    console.log('Login success:', data);
+
+  } catch (error) {
+    console.error('Error:', error);
+    alert('Login failed');
+  }
+
+};
+
+const onFinishFailed = errorInfo => {
+  console.log('Failed:', errorInfo);
+};
+
+function Login() {
+  const [form] = Form.useForm();
+
+  return (
+    <div className="container baground" style={{ backgroundImage: `url(${image})` }}>
+
+      <div className="form-container" style={{height: 500}}>
+          <h1 className="welcome" style={{marginTop: -150, paddingBottom: 50}}>Please register </h1>
+        <Form
+          className='form-antd'
+          name="basic"
+          form={form}
+          layout="vertical" 
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          autoComplete="off"
+        >
+          <Form.Item
+            label="Enter your Username"
+            name="username"
+            rules={[{ required: true, message: 'Please input your username!' }]}
+          >
+            <Input />
+          </Form.Item>
+
+          <Form.Item
+            label="Enter your Password"
+            name="password_One"
+            rules={[{ required: true, message: 'Please input your password!' }]}
+          >
+            <Input.Password />
+          </Form.Item>
+
+        <Form.Item
+            label="Repeat your Password"
+            name="password_Two"
+            rules={[{ required: true, message: 'Please input your password!' }]}
+          >
+            <Input.Password />
+          </Form.Item>
+
+          <Form.Item>
+            <Button type="primary" htmlType="submit" block style={{width: 150}}>
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
+    </div>
+  );
+}
+
+export default Login;
