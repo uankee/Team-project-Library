@@ -18,9 +18,9 @@ namespace Library.Controllers
 
         // Getall (filtre)
         [HttpGet]
-        public async Task<IActionResult> GetAll([FromQuery] string? title)
+        public async Task<IActionResult> GetAll([FromQuery] string? title, int pageNumber = 1)
         {
-            var books = await _bookService.GetAllAsync(title);
+            var books = await _bookService.GetAllAsync(title, pageNumber);
             return Ok(books);
         }
 

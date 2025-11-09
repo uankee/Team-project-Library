@@ -17,9 +17,9 @@ namespace Library.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(int pageNumber = 1)
         {
-            var wishlists = await _wishlistService.GetAllAsync();
+            var wishlists = await _wishlistService.GetAllAsync(pageNumber);
             return Ok(wishlists);
         }
 

@@ -20,9 +20,11 @@ namespace BusinessLogic.Services
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<BorrowDto>> GetAllAsync()
+        public async Task<IEnumerable<BorrowDto>> GetAllAsync(int pageNumber = 1)
         {
             var borrows = await _borrowRepository.GetAllAsync(
+                pageNumber,
+                10,
                 includes: new[] { nameof(Borrow.Book), nameof(Borrow.User) }
             );
 

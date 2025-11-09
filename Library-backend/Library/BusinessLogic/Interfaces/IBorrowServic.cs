@@ -4,7 +4,7 @@ namespace BusinessLogic.Interfaces
 {
     public interface IBorrowService
     {
-        Task<IEnumerable<BorrowDto>> GetAllAsync();
+        Task<IEnumerable<BorrowDto>> GetAllAsync(int pageNumber);
         Task<BorrowDto?> GetByIdAsync(int id);
         Task<BorrowDto> CreateAsync(CreateBorrowDto dto);
         Task<bool> UpdateAsync(int id, UpdateBorrowDto dto);

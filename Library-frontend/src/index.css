@@ -1,0 +1,144 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+.ant-menu-dark .ant-menu-item-selected {
+  background-color: transparent !important;
+  color: #fff !important;
+}
+
+.cards {
+  margin-top: 50px;
+}
+
+.home-containe {
+  height: 100%;
+  width: 100%;
+}
+
+.home-baground {
+  background-image: url('https://wallpapers.com/images/hd/cozy-library-evening-jpg-85ys19olhyvt4ysm.jpg');
+  min-height: 100vh;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  margin-top: -94px;
+}
+
+@media screen and (max-width: 1964px) and (max-height: 3024px) {
+  .home-baground {
+    min-height: 842px;
+  }
+}
+
+.home-buttons {
+  text-align: center;
+  padding-top: 195px;
+}
+
+.home-buttons button{
+  border-color: black;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
+
+.welcome {
+  text-align: center;
+  padding-top: 170px; 
+  color: rgba(255, 255, 255, 1);
+  font-Size: bold;
+  font-size: 45px;
+}
+
+.book-image {
+  width: 240px;
+  height: 350px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border-color: black;
+  border-width: 1px;
+  border-style: solid;
+  transition: transform 0.3s ease;
+}
+
+.book-image:hover {
+  transform: scale(1.05);    
+  transition: transform 0.3s ease;
+}
+
+.card {
+  width: 240px;
+  height: 350px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-left: 53px;
+}

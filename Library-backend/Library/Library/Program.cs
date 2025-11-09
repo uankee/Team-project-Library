@@ -15,6 +15,18 @@ using DataAccess.Data.Seeding;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// CORS для React
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173") 
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
+    });
+});
+
 // Connection String
 string SomeeStr = builder.Configuration.GetConnectionString("SomeeStr")
     ?? throw new InvalidOperationException("Connection string 'SomeeStr' not found.");
@@ -120,7 +132,7 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-// 🔹 Seeder ролей і адміна
+// Seeder ролей і адміна
 using (var scope = app.Services.CreateScope())
 {
     await RoleSeeder.SeedRolesAndAdminAsync(scope.ServiceProvider);
@@ -134,8 +146,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("AllowReactApp");
+
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();

@@ -4,6 +4,7 @@ using DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(LibraryDbContext))]
-    partial class LibraryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251107163232_UpdateSeedBook")]
+    partial class UpdateSeedBook
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -147,7 +150,7 @@ namespace DataAccess.Migrations
                             Id = 4,
                             AuthorId = 4,
                             AvailableCopies = 6,
-                            CoverImage = "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1673020125i/72404657.jpg",
+                            CoverImage = "chttps://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1673020125i/72404657.jpg",
                             GenreId = 4,
                             PublishedDate = new DateTime(2017, 9, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Title = "Beyond the Horizon"
