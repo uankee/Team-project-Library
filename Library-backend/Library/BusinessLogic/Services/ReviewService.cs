@@ -51,7 +51,7 @@ namespace BusinessLogic.Services
             if(userName != null)
                 filters = filters.And(x => x.User.UserName.Contains(userName));
 
-            var reviews = await repo.GetAllAsync(pageNumber, pageSize: 4, filters, "Book", "User");
+            var reviews = await repo.GetAllAsync(pageNumber, pageSize: 5, filters, "Book", "User");
 
             return mapper.Map<IList<ReviewDto>>(reviews);
         }
