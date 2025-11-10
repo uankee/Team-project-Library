@@ -1,8 +1,10 @@
-﻿using BusinessLogic.Configurations.DTOs.AuthorDto;
+﻿using BusinessLogic;
+using BusinessLogic.Configurations.DTOs.AuthorDto;
 using BusinessLogic.Interfaces;
 using BusinessLogic.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace Library.Controllers
 {

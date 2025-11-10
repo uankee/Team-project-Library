@@ -5,6 +5,7 @@ using DataAccess.Data.Entities;
 using DataAccess.Repositories;
 using LinqKit;
 using System.Drawing.Printing;
+using System.Net;
 
 namespace BusinessLogic.Services
 {
@@ -31,12 +32,12 @@ namespace BusinessLogic.Services
         public async Task DeleteAsync(int id)
         {
             if(id < 0)
-                throw new Exception("Id can`t be negative");
+                throw new HttpException("Id can`t be negative or zero.", HttpStatusCode.BadRequest);
 
             var review = await repo.GetByIdAsync(id);
 
             if (review == null)
-                throw new Exception("Review not found.");
+                throw new HttpException("Review not found.", HttpStatusCode.NotFound);
 
             await repo.DeleteAsync(id);
         }
@@ -59,7 +60,7 @@ namespace BusinessLogic.Services
         public async Task<ReviewDto?> GetByIdAsync(int id)
         {
             if(id < 0)
-                throw new Exception("Id can`t be negative");
+                throw new HttpException("Id can`t be negative or zero.", HttpStatusCode.BadRequest);
 
             var review = await repo.GetByIdAsync(id, "Book", "User");
 
@@ -72,12 +73,12 @@ namespace BusinessLogic.Services
         public async Task UpdateAsync(int id, UpdateReviewDto dto)
         {
             if(id <= 0)
-                throw new Exception("Id can`t be negative or zero.");
+                throw new HttpException("Id can`t be negative or zero.", HttpStatusCode.BadRequest);
 
             var review = await repo.GetByIdAsync(id);
 
             if (review == null)
-                throw new Exception("Review not found.");
+                throw new HttpException("Review not found.", HttpStatusCode.NotFound);
 
             mapper.Map(dto, review);
 

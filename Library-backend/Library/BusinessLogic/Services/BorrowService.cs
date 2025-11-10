@@ -4,6 +4,7 @@ using BusinessLogic.Interfaces;
 using DataAccess.Data.Entities;
 using DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System.Net;
 
 namespace BusinessLogic.Services
 {
@@ -45,10 +46,11 @@ namespace BusinessLogic.Services
         {
             var book = await _bookRepository.GetByIdAsync(dto.BookId);
             if (book == null)
-                throw new Exception("Book not found.");
+                throw new HttpException("Book not found", HttpStatusCode.NotFound);
 
             if (book.AvailableCopies <= 0)
-                throw new Exception("No available copies for this book.");
+                throw new HttpException("No available copies for this book.", HttpStatusCode.NotAcceptable);
+
 
             var userActiveBorrow = await _borrowRepository.GetAllAsync(
                 filtering: b => b.BookId == dto.BookId && b.UserId == dto.UserId && b.ReturnedAt == null
@@ -83,7 +85,8 @@ namespace BusinessLogic.Services
                 return false;
 
             if (borrow.ReturnedAt != default)
-                throw new Exception("Book already returned.");
+                throw new HttpException("Book already returned.", HttpStatusCode.NotAcceptable);
+
 
             borrow.ReturnedAt = DateTime.UtcNow;
             borrow.Book.AvailableCopies += 1;
