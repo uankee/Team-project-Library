@@ -4,6 +4,7 @@ using BusinessLogic.Interfaces;
 using DataAccess.Data.Entities;
 using DataAccess.Repositories;
 using LinqKit;
+using System.Net;
 
 namespace BusinessLogic.Services
 {
@@ -30,12 +31,12 @@ namespace BusinessLogic.Services
         public async Task DeleteAsync(int id)
         {
             if (id <= 0)
-                throw new Exception("Invalid author id");
+                throw new HttpException("Id can`t be negative or zero.", HttpStatusCode.BadRequest);
 
             var author = await repo.GetByIdAsync(id);
 
             if (author == null)
-                throw new Exception("Author not found");
+                throw new HttpException("Author not found", HttpStatusCode.NotFound);
 
             await repo.DeleteAsync(author);
         }
@@ -50,7 +51,7 @@ namespace BusinessLogic.Services
             var authors = await repo.GetAllAsync(pageNumber, 10, filters);
 
             if (authors == null)
-                throw new Exception("No authors found");
+                throw new HttpException("No authors found", HttpStatusCode.NotFound);
 
             return mapper.Map<IList<AuthorDto>>(authors);
         }
@@ -58,12 +59,12 @@ namespace BusinessLogic.Services
         public async Task<AuthorDto> GetByIdAsync(int id)
         {
             if (id <= 0)
-                throw new Exception("Invalid author id");
+                throw new HttpException("Id can`t be negative or zero.", HttpStatusCode.BadRequest);
 
             var author = await repo.GetByIdAsync(id);
 
             if (author == null)
-                throw new Exception("Author not found");
+                throw new HttpException("Author not found", HttpStatusCode.NotFound);
 
             return mapper.Map<AuthorDto>(author);
         }
@@ -73,7 +74,7 @@ namespace BusinessLogic.Services
             var author = await repo.GetByIdAsync(id);
 
             if (author == null)
-                throw new Exception("Author not found");
+                throw new HttpException("Author not found", HttpStatusCode.NotFound);
 
             mapper.Map(dto, author);
 

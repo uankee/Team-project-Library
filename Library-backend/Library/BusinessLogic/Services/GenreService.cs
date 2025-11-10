@@ -5,6 +5,7 @@ using BusinessLogic.Interfaces;
 using DataAccess.Data.Entities;
 using DataAccess.Repositories;
 using LinqKit;
+using System.Net;
 
 namespace BusinessLogic.Services
 {
@@ -31,12 +32,12 @@ namespace BusinessLogic.Services
         public async Task DeleteAsync(int id)
         {
             if(id <= 0)
-                throw new Exception("Id can`t be negative or zero.");
+                throw new HttpException("Id can`t be negative or zero.", HttpStatusCode.BadRequest);
 
             var genre = await repo.GetByIdAsync(id);
 
             if (genre == null)
-                throw new Exception("Genre not found.");
+                throw new HttpException("Genre not found.", HttpStatusCode.NotFound);
 
             await repo.DeleteAsync(id);
         }
@@ -51,7 +52,7 @@ namespace BusinessLogic.Services
             var genres = await repo.GetAllAsync(pageNumber, 10, filters);
 
             if(genres == null)
-                throw new Exception("Genres not found.");
+                throw new HttpException("Genres not found.", HttpStatusCode.NotFound);
 
             return mapper.Map<IEnumerable<GenreDto>>(genres);
         }
@@ -59,12 +60,12 @@ namespace BusinessLogic.Services
         public async Task<GenreDto?> GetByIdAsync(int id)
         {
             if(id <= 0)
-                throw new Exception("Id can`t be negative or zero.");
+                throw new HttpException("Id can`t be negative or zero.", HttpStatusCode.BadRequest);
 
             var genre = await repo.GetByIdAsync(id);
 
             if (genre == null)
-                throw new Exception("Genre not found.");
+                throw new HttpException("Genre not found.", HttpStatusCode.NotFound);
 
             return mapper.Map<GenreDto>(genre);
         }
@@ -72,12 +73,12 @@ namespace BusinessLogic.Services
         public async Task UpdateAsync(int id, UpdateGenreDto dto)
         {
             if(id <= 0)
-                throw new Exception("Id can`t be negative or zero.");
+                throw new HttpException("Id can`t be negative or zero.", HttpStatusCode.BadRequest);
 
             var genre = await repo.GetByIdAsync(id);
 
             if(genre == null)
-                throw new Exception("Genre not found.");
+                throw new HttpException("Genre not found.", HttpStatusCode.NotFound);
 
             mapper.Map(dto, genre);
 

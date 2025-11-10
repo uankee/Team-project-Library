@@ -4,6 +4,7 @@ using BusinessLogic.DTOs.Auth;
 using BusinessLogic.Interfaces;
 using DataAccess.Data.Entities;
 using Microsoft.AspNetCore.Identity;
+using System.Net;
 
 namespace BusinessLogic.Services
 {
@@ -72,7 +73,8 @@ namespace BusinessLogic.Services
         {
             var existing = await _userManager.FindByEmailAsync(dto.Email);
             if (existing != null)
-                throw new Exception("User already exists.");
+                throw new HttpException("User already exists.", HttpStatusCode.NotAcceptable);
+
 
             var user = new User { Email = dto.Email, UserName = dto.Email };
             var result = await _userManager.CreateAsync(user, dto.Password);
@@ -80,7 +82,6 @@ namespace BusinessLogic.Services
             if (!result.Succeeded)
                 throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
 
-            // 🔹 усі нові користувачі автоматично звичайні
             await _userManager.AddToRoleAsync(user, "User");
 
             var claims = _jwtService.GetClaims(user);
@@ -91,11 +92,12 @@ namespace BusinessLogic.Services
         {
             var user = await _userManager.FindByEmailAsync(dto.Email);
             if (user == null)
-                throw new Exception("Invalid email or password.");
+                throw new HttpException("Invalid email or password.", HttpStatusCode.BadRequest);
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, dto.Password, false);
             if (!result.Succeeded)
-                throw new Exception("Invalid email or password.");
+                throw new HttpException("Invalid email or password.", HttpStatusCode.BadRequest);
+
             var claims = _jwtService.GetClaims(user);
             return _jwtService.GenerateAccessToken(claims);
         }
