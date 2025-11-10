@@ -17,14 +17,14 @@ namespace WebAPI.Controllers
             _borrowService = borrowService;
         }
 
+        [Authorize]
         [HttpGet]
-        public async Task<IActionResult> GetAll(int pageNumber = 1)
+        public async Task<IActionResult> GetAll()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var isAdmin = User.IsInRole("Admin");
 
-            var borrows = await _borrowService.GetAllAsync(pageNumber);
-
+            var borrows = await _borrowService.GetAllAsync();
 
             if (!isAdmin)
                 borrows = borrows.Where(b => b.UserId == userId);
@@ -32,7 +32,7 @@ namespace WebAPI.Controllers
             return Ok(borrows);
         }
 
-
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -43,19 +43,16 @@ namespace WebAPI.Controllers
             if (borrow == null)
                 return NotFound();
 
-
             if (!isAdmin && borrow.UserId != userId)
                 return Forbid();
 
             return Ok(borrow);
         }
 
-
         [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create(CreateBorrowDto dto)
         {
-
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var isAdmin = User.IsInRole("Admin");
 
@@ -65,7 +62,6 @@ namespace WebAPI.Controllers
             var borrow = await _borrowService.CreateAsync(dto);
             return Ok(borrow);
         }
-
 
         [Authorize]
         [HttpPut("return/{id}")]
@@ -77,7 +73,6 @@ namespace WebAPI.Controllers
             var borrow = await _borrowService.GetByIdAsync(id);
             if (borrow == null)
                 return NotFound();
-
 
             if (!isAdmin && borrow.UserId != userId)
                 return Forbid();
@@ -100,6 +95,14 @@ namespace WebAPI.Controllers
         {
             var success = await _borrowService.DeleteAsync(id);
             return success ? NoContent() : NotFound();
+        }
+
+        [Authorize]
+        [HttpGet("check-status/{bookId}")]
+        public async Task<IActionResult> CheckBookStatus(int bookId)
+        {
+            var available = await _borrowService.CheckBookAvailabilityAsync(bookId);
+            return Ok(new { bookId, available });
         }
     }
 }
