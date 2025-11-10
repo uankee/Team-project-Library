@@ -3,8 +3,6 @@ using BusinessLogic.Configurations.DTOs.BorrowDto;
 using BusinessLogic.Interfaces;
 using DataAccess.Data.Entities;
 using DataAccess.Repositories;
-using Microsoft.EntityFrameworkCore;
-using System.Net;
 
 namespace BusinessLogic.Services
 {
@@ -46,11 +44,10 @@ namespace BusinessLogic.Services
         {
             var book = await _bookRepository.GetByIdAsync(dto.BookId);
             if (book == null)
-                throw new HttpException("Book not found", HttpStatusCode.NotFound);
+                throw new Exception("Book not found.");
 
             if (book.AvailableCopies <= 0)
-                throw new HttpException("No available copies for this book.", HttpStatusCode.NotAcceptable);
-
+                throw new Exception("No available copies for this book.");
 
             var userActiveBorrow = await _borrowRepository.GetAllAsync(
                 filtering: b => b.BookId == dto.BookId && b.UserId == dto.UserId && b.ReturnedAt == null
@@ -84,9 +81,8 @@ namespace BusinessLogic.Services
             if (borrow == null)
                 return false;
 
-            if (borrow.ReturnedAt != default)
-                throw new HttpException("Book already returned.", HttpStatusCode.NotAcceptable);
-
+            if (borrow.ReturnedAt != null)
+                throw new Exception("Book already returned.");
 
             borrow.ReturnedAt = DateTime.UtcNow;
             borrow.Book.AvailableCopies += 1;
@@ -118,7 +114,7 @@ namespace BusinessLogic.Services
             if (borrow == null)
                 return false;
 
-            if (borrow.ReturnedAt == default)
+            if (borrow.ReturnedAt == null)
             {
                 borrow.Book.AvailableCopies += 1;
                 await _bookRepository.UpdateAsync(borrow.Book);
@@ -135,6 +131,17 @@ namespace BusinessLogic.Services
                 throw new Exception("Book not found.");
 
             return book.AvailableCopies > 0;
+        }
+
+
+        public async Task<IEnumerable<BorrowDto>> GetUserBorrowsAsync(string userId)
+        {
+            var borrows = await _borrowRepository.GetAllAsync(
+                filtering: b => b.UserId == userId,
+                includes: new[] { nameof(Borrow.Book) }
+            );
+
+            return _mapper.Map<IEnumerable<BorrowDto>>(borrows);
         }
     }
 }
