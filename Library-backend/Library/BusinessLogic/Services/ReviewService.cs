@@ -4,6 +4,7 @@ using BusinessLogic.Interfaces;
 using DataAccess.Data.Entities;
 using DataAccess.Repositories;
 using LinqKit;
+using System.Drawing.Printing;
 
 namespace BusinessLogic.Services
 {
@@ -50,7 +51,7 @@ namespace BusinessLogic.Services
             if(userName != null)
                 filters = filters.And(x => x.User.UserName.Contains(userName));
 
-            var reviews = await repo.GetAllAsync(pageNumber, 10, filters, "Book", "User");
+            var reviews = await repo.GetAllAsync(pageNumber, pageSize: 4, filters, "Book", "User");
 
             return mapper.Map<IList<ReviewDto>>(reviews);
         }

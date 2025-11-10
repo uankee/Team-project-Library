@@ -17,7 +17,6 @@ namespace WebAPI.Controllers
             _borrowService = borrowService;
         }
 
-        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAll(int pageNumber = 1)
         {
@@ -34,7 +33,6 @@ namespace WebAPI.Controllers
         }
 
 
-        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
