@@ -50,6 +50,13 @@ namespace BusinessLogic.Services
             if (book.AvailableCopies <= 0)
                 throw new Exception("No available copies for this book.");
 
+            var userActiveBorrow = await _borrowRepository.GetAllAsync(
+                filtering: b => b.BookId == dto.BookId && b.UserId == dto.UserId && b.ReturnedAt == null
+            );
+
+            if (userActiveBorrow.Any())
+                throw new Exception("You have already borrowed this book and not returned it yet.");
+
             var borrow = new Borrow
             {
                 BookId = dto.BookId,
@@ -60,7 +67,6 @@ namespace BusinessLogic.Services
 
             book.AvailableCopies -= 1;
             await _bookRepository.UpdateAsync(book);
-
             await _borrowRepository.AddAsync(borrow);
 
             return _mapper.Map<BorrowDto>(borrow);
@@ -80,7 +86,6 @@ namespace BusinessLogic.Services
                 throw new Exception("Book already returned.");
 
             borrow.ReturnedAt = DateTime.UtcNow;
-
             borrow.Book.AvailableCopies += 1;
 
             await _bookRepository.UpdateAsync(borrow.Book);
@@ -118,6 +123,15 @@ namespace BusinessLogic.Services
 
             await _borrowRepository.DeleteAsync(borrow);
             return true;
+        }
+
+        public async Task<bool> CheckBookAvailabilityAsync(int bookId)
+        {
+            var book = await _bookRepository.GetByIdAsync(bookId);
+            if (book == null)
+                throw new Exception("Book not found.");
+
+            return book.AvailableCopies > 0;
         }
     }
 }
