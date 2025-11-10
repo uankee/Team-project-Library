@@ -1,7 +1,7 @@
 import React, { cloneElement, useEffect, useState } from 'react';
 import BookCard from './BookCard';
 import { Button, Col, Row } from 'antd';
-import image from '../img/Home.jpg';
+import image from '../img/Home.png';
 
 
 function Home() {
@@ -50,7 +50,7 @@ function Home() {
         <h1 className='welcome' >W<span style={{color: 'black'}} >elco</span>me to the Library</h1>
 
         <div className='home-buttons'>
-            <button className='button' onClick={PreviousPage} style={{marginRight: 6}}>Previous Page</button>
+            <button className='button' onClick={PreviousPage} style={{marginRight: 16}}>Previous Page</button>
             <button className='button' onClick={NextPage}>Next Page</button>
         </div>
 
@@ -60,7 +60,7 @@ function Home() {
                 Books not found</h1>
             : 
             <div className="cards">
-                <Row gutter={[20, 0]}>
+                <Row gutter={[0, 0]}>
                     {books.map(book => (
                         <Col key={book.id} span={4.5}>
                             <BookCard Book={book} />
