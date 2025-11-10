@@ -50,8 +50,8 @@ namespace WebAPI.Controllers
         }
 
         [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> Create(CreateBorrowDto dto)
+        [HttpPost("borrow")]
+        public async Task<IActionResult> BorrowBook(CreateBorrowDto dto)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var isAdmin = User.IsInRole("Admin");
@@ -81,6 +81,24 @@ namespace WebAPI.Controllers
             return success ? NoContent() : NotFound();
         }
 
+        [Authorize]
+        [HttpGet("check-status/{bookId}")]
+        public async Task<IActionResult> CheckBookStatus(int bookId)
+        {
+            var available = await _borrowService.CheckBookAvailabilityAsync(bookId);
+            return Ok(new { bookId, available });
+        }
+
+        // 🔹 Новий ендпоінт: отримання орендованих книг користувача
+        [Authorize]
+        [HttpGet("mybooks")]
+        public async Task<IActionResult> GetMyBooks()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var books = await _borrowService.GetUserBorrowsAsync(userId);
+            return Ok(books);
+        }
+
         [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, UpdateBorrowDto dto)
@@ -95,14 +113,6 @@ namespace WebAPI.Controllers
         {
             var success = await _borrowService.DeleteAsync(id);
             return success ? NoContent() : NotFound();
-        }
-
-        [Authorize]
-        [HttpGet("check-status/{bookId}")]
-        public async Task<IActionResult> CheckBookStatus(int bookId)
-        {
-            var available = await _borrowService.CheckBookAvailabilityAsync(bookId);
-            return Ok(new { bookId, available });
         }
     }
 }
