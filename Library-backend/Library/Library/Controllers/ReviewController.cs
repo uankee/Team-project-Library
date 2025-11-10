@@ -17,7 +17,6 @@ namespace Library.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public async Task<IActionResult> GetAll(string? bookTitle, string? userName, int pageNumber = 1)
         {
             var reviews = await reviewService.GetAllAsync(bookTitle, userName, pageNumber);
@@ -26,7 +25,7 @@ namespace Library.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize]
+
         public async Task<IActionResult> GetById(int id)
         {
             var review = await reviewService.GetByIdAsync(id);

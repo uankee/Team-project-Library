@@ -26,11 +26,11 @@ namespace DataAccess.Repositories
         {
             var query = set.AsQueryable();
 
-            if (pageNumber != null)
-                query = await query.PaginateAsync(pageNumber.Value, pageSize);
-
             if (filtering != null)
                 query = query.Where(filtering);
+
+            if (pageNumber != null)
+                query = await query.PaginateAsync(pageNumber.Value, pageSize);
 
             if (includes != null && includes.Length > 0)
             {

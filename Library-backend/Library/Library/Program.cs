@@ -18,14 +18,15 @@ var builder = WebApplication.CreateBuilder(args);
 // CORS для React
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowReactApp", policy =>
-    {
-        policy.WithOrigins("http://localhost:5173") 
-              .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials();
-    });
+    options.AddPolicy("AllowReactApp",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5173") 
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
 });
+
 
 // Connection String
 string SomeeStr = builder.Configuration.GetConnectionString("SomeeStr")

@@ -18,7 +18,6 @@ namespace Library.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public async Task<IActionResult> GetAll(string? authorName, int pageNumber = 1)
         {
             var authors = await authorService.GetAllAsync(authorName, pageNumber);
@@ -27,7 +26,6 @@ namespace Library.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize]
         public async Task<IActionResult> GetById(int id)
         {
             var author = await authorService.GetByIdAsync(id);
@@ -36,7 +34,7 @@ namespace Library.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(CreateAuthorDto dto)
         {
             var author = await authorService.CreateAsync(dto);
@@ -45,7 +43,7 @@ namespace Library.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, UpdateAuthorDto dto)
         {
             await authorService.UpdateAsync(id, dto);
@@ -53,7 +51,7 @@ namespace Library.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             await authorService.DeleteAsync(id);

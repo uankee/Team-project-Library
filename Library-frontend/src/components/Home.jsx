@@ -14,15 +14,25 @@ function Home() {
     }, [page]);
 
     async function fetchBooks() {
-        const api = `http://localhost:5162/api/Book?pageNumber=${page}`;
+        const api = `https://localhost:7167/api/Book?pageNumber=${page}`;
 
-        const response = await fetch(api)
-        const data = await response.json();
+        try {
+            const response = await fetch(api);
 
-        console.log(data)
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
 
-        setBooks(data);
+            const data = await response.json();
+            console.log(data);
+            
+            setBooks(data);
+        } catch (error) {
+            console.error("Failed to fetch books:", error);
+            setBooks([]); 
+        }
     }
+
 
     function NextPage() {
         setPage(prev => prev + 1);
@@ -37,7 +47,7 @@ function Home() {
 
   return (
     <div className="home-container baground" style={{backgroundImage: `url(${image})`}}>
-        <h1 className='welcome' style={{marginTop: -100}}>W<span style={{color: 'black'}} >elco</span>me to the Library</h1>
+        <h1 className='welcome' >W<span style={{color: 'black'}} >elco</span>me to the Library</h1>
 
         <div className='home-buttons'>
             <button className='button' onClick={PreviousPage} style={{marginRight: 6}}>Previous Page</button>
@@ -50,7 +60,7 @@ function Home() {
                 Books not found</h1>
             : 
             <div className="cards">
-                <Row gutter={[0, 0]}>
+                <Row gutter={[20, 0]}>
                     {books.map(book => (
                         <Col key={book.id} span={4.5}>
                             <BookCard Book={book} />

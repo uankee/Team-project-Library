@@ -1,5 +1,7 @@
 ﻿using BusinessLogic.Configurations.DTOs.GenreDto;
+using BusinessLogic.Configurations.DTOs.ReviewDto;
 using BusinessLogic.Interfaces;
+using BusinessLogic.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +20,6 @@ namespace Library.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         public async Task<IActionResult> GetAll(string? genreName, int pageNumber = 1)
         {
             var genres = await genreService.GetAllAsync(genreName, pageNumber);
@@ -27,7 +28,6 @@ namespace Library.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize]
         public async Task<IActionResult> GetById(int id)
         {
             var genre = await genreService.GetByIdAsync(id);
@@ -45,6 +45,14 @@ namespace Library.Controllers
             var createdGenre = await genreService.CreateAsync(dto);
 
             return CreatedAtAction(nameof(GetById), new { id = createdGenre.Id }, createdGenre);
+        }
+
+        [HttpPut("{id}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Update(int id, UpdateGenreDto dto)
+        {
+            await genreService.UpdateAsync(id, dto);
+            return NoContent();
         }
 
         [HttpDelete("{id}")]

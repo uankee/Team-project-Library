@@ -29,7 +29,7 @@ namespace BusinessLogic.Services
 
             var books = await _bookRepository.GetAllAsync(
                 pageNumber,
-                10,
+                pageSize: 10,
                 filters,
                 ["Author", "Genre"]
             );

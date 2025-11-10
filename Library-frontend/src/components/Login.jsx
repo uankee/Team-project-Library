@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import { Button, Form, Input } from 'antd';
 import image from '../img/Login.jpg';
 import Password from 'antd/es/input/Password';
+import { useNavigate } from 'react-router-dom';
+
+function Login() {
+  const [form] = Form.useForm();
+  const navigate = useNavigate()
 
 const onFinish = async (values) => {
   console.log('Success:', values);
 
   try {
-    const response = await fetch('http://localhost:5162/api/User/login', {
+    const response = await fetch('https://localhost:7167/api/User/login', {
         method: 'POST',
         headers: {
             'Content-Type' : 'application/json'
@@ -25,6 +30,8 @@ const onFinish = async (values) => {
     const data = await response.json();
     console.log('Login success:', data);
 
+    navigate('/')
+
   } catch (error) {
     console.error('Error:', error);
     alert('Login failed');
@@ -35,9 +42,6 @@ const onFinish = async (values) => {
 const onFinishFailed = errorInfo => {
   console.log('Failed:', errorInfo);
 };
-
-function Login() {
-  const [form] = Form.useForm();
 
   return (
     <div className="container baground" style={{ backgroundImage: `url(${image})` }}>

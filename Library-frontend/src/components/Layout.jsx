@@ -51,7 +51,6 @@ const AppLayout = () => {
     <Layout style={{ minHeight: '100vh' }}>
       <Header
         style={{
-          top: 0,
           zIndex: 1,
           width: '100%',
           display: 'flex',

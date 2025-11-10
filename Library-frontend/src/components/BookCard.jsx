@@ -14,7 +14,7 @@ function BookCard({Book}) {
         hoverable
         className='card'
         cover={
-            <Link to={`/book_page/${id}`}>
+            <Link to={`book/${id}`}>
         <img
             className="book-image"
             draggable={false}

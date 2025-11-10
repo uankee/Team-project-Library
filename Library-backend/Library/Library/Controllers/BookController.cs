@@ -25,7 +25,7 @@ namespace Library.Controllers
         }
 
         // GetById
-        [HttpGet("{id:int}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             var book = await _bookService.GetByIdAsync(id);
