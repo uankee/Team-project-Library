@@ -47,7 +47,7 @@ function Home() {
 
   return (
     <div className="home-container baground" style={{backgroundImage: `url(${image})`}}>
-        <h1 className='welcome' >W<span style={{color: 'black'}} >elco</span>me to the Library</h1>
+        <h1 className='welcome' >Welcome to the Library</h1>
 
         <div className='home-buttons'>
             <button className='button' onClick={PreviousPage} style={{marginRight: 16}}>Previous Page</button>
