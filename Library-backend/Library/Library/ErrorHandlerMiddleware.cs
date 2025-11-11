@@ -29,7 +29,7 @@ namespace Library
             }
         }
 
-        private async void SendResponse(HttpContext context, string msg, HttpStatusCode code = HttpStatusCode.InternalServerError)
+        private async Task SendResponse(HttpContext context, string msg, HttpStatusCode code = HttpStatusCode.InternalServerError)
         {
             context.Response.StatusCode = (int)code;
             await context.Response.WriteAsJsonAsync(new ProblemDetails
