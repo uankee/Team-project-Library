@@ -25,7 +25,10 @@ namespace BusinessLogic.Configurations
             CreateMap<Book, UpdateBookDto>().ReverseMap();
 
             // Borrow (Rent)
-            CreateMap<Borrow, BorrowDto>().ReverseMap();
+            CreateMap<Borrow, BorrowDto>()
+                .ForMember(dest => dest.BookTitle, opt => opt.MapFrom(src => src.Book.Title))
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.User.UserName))
+                .ReverseMap();
             CreateMap<Borrow, CreateBorrowDto>().ReverseMap();
             CreateMap<Borrow, UpdateBorrowDto>().ReverseMap();
 
