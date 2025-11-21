@@ -1,22 +1,32 @@
-import React, { cloneElement, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BookCard from './BookCard';
-import { Button, Col, Row } from 'antd';
+import { Col, Input, Row, Spin } from 'antd';
 import image from '../img/Home.png';
 
-
 function Home() {
-
-    const[books, setBooks] = useState([]);
-    const[page, setPage] = useState(1);
+    const [books, setBooks] = useState([]);
+    const [page, setPage] = useState(1);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        fetchBooks();
-    }, [page]);
+        const debounce = setTimeout(() => {
+            fetchBooks();
+        }, 300);
+
+        return () => clearTimeout(debounce);
+    }, [page, searchTerm]);
 
     async function fetchBooks() {
-        const api = `https://localhost:7167/api/Book?pageNumber=${page}`;
+        const api = new URL('https://localhost:7167/api/Book');
+        api.searchParams.set('pageNumber', page);
+
+        if (searchTerm.trim()) {
+            api.searchParams.set('searchTerm', searchTerm.trim());
+        }
 
         try {
+            setIsLoading(true);
             const response = await fetch(api);
 
             if (!response.ok) {
@@ -24,53 +34,70 @@ function Home() {
             }
 
             const data = await response.json();
-            console.log(data);
-            
             setBooks(data);
         } catch (error) {
-            console.error("Failed to fetch books:", error);
-            setBooks([]); 
+            console.error('Failed to fetch books:', error);
+            setBooks([]);
+        } finally {
+            setIsLoading(false);
         }
     }
-
 
     function NextPage() {
         setPage(prev => prev + 1);
     }
 
     function PreviousPage() {
-        if(page === 1)
+        if (page === 1)
             return;
 
         setPage(prev => prev - 1);
     }
 
-  return (
-    <div className="home-container baground" style={{backgroundImage: `url(${image})`}}>
-        <h1 className='welcome' >Welcome to the Library</h1>
+    return (
+        <div className="home-container baground" style={{ backgroundImage: `url(${image})` }}>
+            <h1 className='welcome'>Welcome to the Library</h1>
 
-        <div className='home-buttons'>
-            <button className='button' onClick={PreviousPage} style={{marginRight: 16}}>Previous Page</button>
-            <button className='button' onClick={NextPage}>Next Page</button>
-        </div>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: 40 }}>
+                <Input.Search
+                    placeholder="Search by title, genre, author or year..."
+                    allowClear
+                    size="large"
+                    value={searchTerm}
+                    onChange={(e) => {
+                        setPage(1);
+                        setSearchTerm(e.target.value);
+                    }}
+                    style={{ width: 600 }}
+                />
+            </div>
 
-        { 
-            books === null || books.length === 0 
-            ? <h1 style={{textAlign: 'center', color: 'white', fontSize: "64px", paddingTop: '100px', margin: '0', marginBottom: '0'}}>
-                Books not found</h1>
-            : 
-            <div className="cards">
-                <Row gutter={[0, 0]}>
-                    {books.map(book => (
-                        <Col key={book.id} span={4.5}>
-                            <BookCard Book={book} />
-                        </Col>
-                    ))}
-                </Row>
-            </div> 
-        } 
+            <div className='home-buttons'>
+                <button className='button' onClick={PreviousPage} style={{ marginRight: 16 }}>Previous Page</button>
+                <button className='button' onClick={NextPage}>Next Page</button>
+            </div>
+
+            {
+                isLoading ? (
+                    <div style={{ display: 'flex', justifyContent: 'center', paddingTop: 100 }}>
+                        <Spin size="large" />
+                    </div>
+                ) : books === null || books.length === 0
+                    ? <h1 style={{ textAlign: 'center', color: 'white', fontSize: "48px", paddingTop: '80px', margin: '0', marginBottom: '0' }}>
+                        Books not found</h1>
+                    :
+                    <div className="cards">
+                        <Row gutter={[16, 16]} justify="start">
+                            {books.map(book => (
+                                <Col key={book.id} xs={24} sm={12} md={8} lg={6} xl={6} xxl={4}>
+                                    <BookCard Book={book} />
+                                </Col>
+                            ))}
+                        </Row>
+                    </div>
+            }
         </div>
-  );
+    );
 };
 
 export default Home;

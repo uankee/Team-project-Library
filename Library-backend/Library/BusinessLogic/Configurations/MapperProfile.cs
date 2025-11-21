@@ -20,7 +20,11 @@ namespace BusinessLogic.Configurations
             CreateMap<Author, UpdateAuthorDto>().ReverseMap();
 
             // Book
-            CreateMap<Book, BookDto>().ReverseMap();
+            CreateMap<Book, BookDto>()
+                .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author.Name))
+                .ForMember(dest => dest.GenreName, opt => opt.MapFrom(src => src.Genre.Name))
+                .ForMember(dest => dest.PublishedYear, opt => opt.MapFrom(src => src.PublishedDate.Year))
+                .ReverseMap();
             CreateMap<Book, CreateBookDto>().ReverseMap();
             CreateMap<Book, UpdateBookDto>().ReverseMap();
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import image from "../img/BookPage.png"
+import NoImage from "../img/Noimage.png"
 import { useParams } from "react-router-dom";
 import AddReviewModal from "./AddReviewModal";
 
@@ -18,8 +19,19 @@ function BookPage() {
 
     useEffect(() => {
         if (!book) return;
-        fetchData(`https://localhost:7167/api/Genre/${book.genreId}`, setGenre);
-        fetchData(`https://localhost:7167/api/Author/${book.authorId}`, setAuthor);
+
+        if (book.genreName) {
+            setGenre({ name: book.genreName });
+        } else {
+            fetchData(`https://localhost:7167/api/Genre/${book.genreId}`, setGenre);
+        }
+
+        if (book.authorName) {
+            setAuthor({ name: book.authorName });
+        } else {
+            fetchData(`https://localhost:7167/api/Author/${book.authorId}`, setAuthor);
+        }
+
         fetchData(`https://localhost:7167/api/Review?bookTitle=${encodeURIComponent(book.title)}&pageNumber=1`, setReview);
     }, [book]);
 
@@ -47,7 +59,7 @@ function BookPage() {
         <>
             <div className="image-container">
             <img
-                src={book.coverImage}
+                src={book.coverImage || NoImage}
                 alt={book.title}
                 className="book-info-image"
             />

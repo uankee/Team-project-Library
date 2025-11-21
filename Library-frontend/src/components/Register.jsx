@@ -32,6 +32,10 @@ const onFinish = async (values) => {
     const data = await response.json();
     console.log('Login success:', data);
 
+    if (data?.token) {
+      localStorage.setItem('token', data.token);
+    }
+
     navigate('/')
   } catch (error) {
     console.error('Error:', error);

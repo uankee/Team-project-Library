@@ -7,6 +7,7 @@ import MyBooksPage from './components/MyBooksPage'
 import RentalHistoryPage from './components/RentalHistoryPage'
 import Register from './components/Register'
 import Login from './components/Login'
+import PrivateRoute from './components/PrivateRoute'
 
 
 function App() {
@@ -14,14 +15,14 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<AppLayout />}>
-            <Route index element={<Home /> } />
-            <Route path='book/:id' element={<BookPage /> } />
-            <Route path='my_books' element={<MyBooksPage />} />
-            <Route path='rental_history' element={<RentalHistoryPage />} />
-            <Route path='register' element={ <Register /> } />
-            <Route path='login' element={<Login /> } />
-          </Route>
+            <Route path='/' element={<AppLayout />}>
+              <Route index element={<Home /> } />
+              <Route path='book/:id' element={<BookPage /> } />
+              <Route path='my_books' element={<PrivateRoute><MyBooksPage /></PrivateRoute>} />
+              <Route path='rental_history' element={<PrivateRoute><RentalHistoryPage /></PrivateRoute>} />
+              <Route path='register' element={ <Register /> } />
+              <Route path='login' element={<Login /> } />
+            </Route>
         </Routes>
       </BrowserRouter>
     </>

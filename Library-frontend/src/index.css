@@ -129,7 +129,7 @@ button:focus-visible {
 
 .book-image {
   width: 240px;
-  height: 350px;
+  height: 280px;
   border-radius: 10px;
   margin-bottom: 20px;
   border-color: black;
@@ -145,7 +145,7 @@ button:focus-visible {
 
 .card {
   width: 240px;
-  height: 350px;
+  min-height: 420px;
   border-radius: 10px;
   margin-bottom: 20px;
   margin-left: 70px;

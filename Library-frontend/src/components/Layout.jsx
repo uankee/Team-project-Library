@@ -1,12 +1,13 @@
 import React from 'react';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
-import { Link, Outlet } from 'react-router-dom';
+import { Layout, Menu, theme } from 'antd';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import {
     HomeFilled,
     AlignLeftOutlined,
     BookOutlined,
     UserAddOutlined,
-    UserOutlined
+    UserOutlined,
+    LogoutOutlined
 } from '@ant-design/icons';
 const { Header, Content, Footer } = Layout;
 
@@ -46,6 +47,18 @@ const AppLayout = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+  const navigate = useNavigate();
+
+  const isAuthenticated = !!localStorage.getItem('token');
+  const authItems = isAuthenticated
+    ? [
+        {
+          key: 'logout',
+          label: <span onClick={() => { localStorage.removeItem('token'); navigate('/login'); }}>Logout</span>,
+          icon: <LogoutOutlined />
+        }
+      ]
+    : itemsLR;
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -74,7 +87,7 @@ const AppLayout = () => {
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={['1']}
-          items={itemsLR}
+          items={authItems}
           style={{ flex: 1, minWidth: 0, background: 'transparent', color: 'black', justifyContent: 'flex-end' }}
         />
       </Header>
