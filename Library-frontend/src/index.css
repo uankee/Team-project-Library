@@ -82,6 +82,23 @@ button:focus-visible {
   margin-top: 50px;
 }
 
+.home-search {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  padding-bottom: 10px;
+}
+
+.search-input {
+  max-width: 640px;
+  width: 80%;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
 .home-container {
   height: 100%;
   width: 100%;
@@ -148,7 +165,31 @@ button:focus-visible {
   height: 350px;
   border-radius: 10px;
   margin-bottom: 20px;
-  margin-left: 70px;
+  margin-left: 30px;
+  background: rgba(0, 0, 0, 0.55);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.book-card-meta {
+  margin-top: -4px;
+  color: white;
+}
+
+.book-card-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #e6f7ff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.book-card-subtitle {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  min-height: 20px;
 }
 
 .container {

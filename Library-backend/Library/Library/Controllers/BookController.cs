@@ -1,4 +1,4 @@
-﻿using BusinessLogic.Configurations.DTOs.BookDto;
+using BusinessLogic.Configurations.DTOs.BookDto;
 using BusinessLogic.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,9 +18,9 @@ namespace Library.Controllers
 
         // Getall (filtre)
         [HttpGet]
-        public async Task<IActionResult> GetAll([FromQuery] string? title, int pageNumber = 1)
+        public async Task<IActionResult> GetAll([FromQuery] string? searchTerm, int pageNumber = 1)
         {
-            var books = await _bookService.GetAllAsync(title, pageNumber);
+            var books = await _bookService.GetAllAsync(searchTerm, pageNumber);
             return Ok(books);
         }
 

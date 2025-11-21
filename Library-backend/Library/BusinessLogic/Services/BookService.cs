@@ -1,9 +1,8 @@
-﻿using AutoMapper;
+using AutoMapper;
 using BusinessLogic.Configurations.DTOs.BookDto;
 using BusinessLogic.Interfaces;
 using DataAccess.Data.Entities;
 using DataAccess.Repositories;
-using System.Linq.Expressions;
 using LinqKit;
 
 namespace BusinessLogic.Services
@@ -20,12 +19,26 @@ namespace BusinessLogic.Services
         }
 
         // Getall (filtre)
-        public async Task<IEnumerable<BookDto>> GetAllAsync(string? title = null, int pageNumber = 1)
+        public async Task<IEnumerable<BookDto>> GetAllAsync(string? searchTerm = null, int pageNumber = 1)
         {
             var filters = PredicateBuilder.New<Book>(true);
 
-            if (!string.IsNullOrEmpty(title))
-                filters = filters.And(b => b.Title.Contains(title));
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                var normalizedTerm = searchTerm.Trim().ToLower();
+                var searchPredicate = PredicateBuilder.New<Book>(false);
+
+                searchPredicate = searchPredicate.Or(b => b.Title.ToLower().Contains(normalizedTerm));
+                searchPredicate = searchPredicate.Or(b => b.Author.Name.ToLower().Contains(normalizedTerm));
+                searchPredicate = searchPredicate.Or(b => b.Genre.Name.ToLower().Contains(normalizedTerm));
+
+                if (int.TryParse(normalizedTerm, out var year))
+                {
+                    searchPredicate = searchPredicate.Or(b => b.PublishedDate.Year == year);
+                }
+
+                filters = filters.And(searchPredicate);
+            }
 
             var books = await _bookRepository.GetAllAsync(
                 pageNumber,

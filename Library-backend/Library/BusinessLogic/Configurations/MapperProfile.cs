@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using DataAccess.Data.Entities;
 using BusinessLogic.Configurations.DTOs.AuthorDto;
 using BusinessLogic.Configurations.DTOs.BookDto;
@@ -20,7 +20,10 @@ namespace BusinessLogic.Configurations
             CreateMap<Author, UpdateAuthorDto>().ReverseMap();
 
             // Book
-            CreateMap<Book, BookDto>().ReverseMap();
+            CreateMap<Book, BookDto>()
+                .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author.Name))
+                .ForMember(dest => dest.GenreName, opt => opt.MapFrom(src => src.Genre.Name))
+                .ReverseMap();
             CreateMap<Book, CreateBookDto>().ReverseMap();
             CreateMap<Book, UpdateBookDto>().ReverseMap();
 
